@@ -1,0 +1,17 @@
+// sass-lint:disable single-line-per-selector, indentation, property-sort-order, empty-line-between-blocks
+
+// Usage
+// @include z-index(example);
+
+$z-index: (
+  exampleone         : 200,
+  exampletwo         : 100,
+);
+
+@function z-index($key) {
+  @return map-get($z-index, $key);
+}
+
+@mixin z-index($key) {
+  z-index: z-index($key);
+}
