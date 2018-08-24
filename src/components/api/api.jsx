@@ -33,13 +33,14 @@ class Results extends Component {
       this.setState({ data: [] });
     }
 
-    if(this.state.inputValue.length === 0 && this.state.inputValue.length < 1 ) {
+    if(this.state.inputValue.length === 0 || this.state.inputValue.length < 1 || this.state.inputValue.length === '' ) {
       this.setState({ data: ['No search Results'] });
     }
   }
 
-  updateBox(e) {
-    console.log("Get value here and add into current text box as text");
+  updateBox(name) {
+    console.log(name);
+    this.setState({ inputValue: name });
   }
 
 
@@ -47,11 +48,11 @@ class Results extends Component {
     console.log(this.state.inputValue.length);
     console.log(this.state.data);
     return (
-      <div>
+      <div className='search'>
         <input type='text'
           onChange={this.onSearchChange}
           value={this.state.inputValue} />
-        {this.state.data.map(({ name, index }) => (<span onClick={this.updateBox} key={index} value={name} className="result">{name}</span>))}
+        {this.state.data.map(({ name, index }) => (<span onClick={() => this.updateBox(name)} key={index} value={name} className="result">{name}</span>))}
       </div>
     );
   }

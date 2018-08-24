@@ -1,4 +1,11 @@
 // Main SCSS fie No direct CSS to be put in here only @imports //
 
 // Base //
+@import 'partials/base/reset';
+@import 'partials/base/normalize';
+@import 'partials/base/z-index';
+@import 'partials/base/mixins';
+@import 'partials/base/vars';
 
+// Layout //
+@import 'partials/layout/general';
