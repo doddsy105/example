@@ -9,6 +9,7 @@ class Results extends Component {
     }
 
     this.onSearchChange = this.onSearchChange.bind(this);
+    this.updateBox = this.updateBox.bind(this);
   }
 
   onSearchChange(e) {
@@ -37,6 +38,10 @@ class Results extends Component {
     }
   }
 
+  updateBox(e) {
+    console.log("Get value here and add into current text box as text");
+  }
+
 
   render() {
     console.log(this.state.inputValue.length);
@@ -46,7 +51,7 @@ class Results extends Component {
         <input type='text'
           onChange={this.onSearchChange}
           value={this.state.inputValue} />
-        {this.state.data.map(({ name, index }) => (<span key={index} className="file-list-container__wrapper">{name}</span>))}
+        {this.state.data.map(({ name, index }) => (<span onClick={this.updateBox} key={index} value={name} className="result">{name}</span>))}
       </div>
     );
   }
