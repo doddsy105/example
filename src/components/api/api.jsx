@@ -32,7 +32,7 @@ class Results extends Component {
         });
     }
 
-    if(this.state.inputValue.length <= 1 ) {
+    if(this.state.inputValue.length <= 0 ) {
       this.setState({ data: [] });
     }
   }
@@ -57,7 +57,7 @@ class Results extends Component {
           onClick={this.checkValue}
           value={this.state.inputValue} />
         <div className='search-form__results'>
-          {this.state.data.map(({ name, index, country, city }) => (<div onClick={() => this.updateBox(name)} key={index} value={name} className="search-form__results-name">{name}
+          {this.state.data.map(({ name, placeKey, country, city }) => (<div onClick={() => this.updateBox(name)} key={placeKey} value={name} className="search-form__results-name">{name}
             <div className='search-form__results-details'><span>{city} </span><span>{country}</span></div>
           </div>))}
         </div>
