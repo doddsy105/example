@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+require('es6-promise').polyfill();
+require('isomorphic-fetch');
 
 class Results extends Component {
   constructor(props) {
@@ -10,13 +12,14 @@ class Results extends Component {
 
     this.onSearchChange = this.onSearchChange.bind(this);
     this.updateBox = this.updateBox.bind(this);
+    this.checkValue = this.checkValue.bind(this);
   }
 
   onSearchChange(e) {
     this.setState({ inputValue: e.target.value});
     let Location = this.state.inputValue;
 
-    if(this.state.inputValue.length >= 2) {
+    if(this.state.inputValue.length >= 1) {
       const url = 'https://www.rentalcars.com/FTSAutocomplete.do?solrIndex=fts_en&solrRows=%7b5%7d&solrTerm=%7b' + Location + '%7d';
       fetch(url)
         .then(res => res.json())
@@ -29,31 +32,35 @@ class Results extends Component {
         });
     }
 
-    if(this.state.inputValue.length <= 1 ) {
+    if(this.state.inputValue.length <= 0 ) {
       this.setState({ data: [] });
-    }
-
-    if(this.state.inputValue.length === 0 || this.state.inputValue.length < 1 || this.state.inputValue.length === '' ) {
-      this.setState({ data: ['No search Results'] });
     }
   }
 
   updateBox(name) {
-    console.log(name);
     this.setState({ inputValue: name });
+    this.setState({ data: [] });
+  }
+
+  checkValue() {
+    this.setState({ data: [] });
   }
 
 
   render() {
-    console.log(this.state.inputValue.length);
-    console.log(this.state.data);
     return (
-      <div className='search'>
+      <div className='search-form__search'>
         <input type='text'
+          className='search-form__search-input'
           placeholder='city, airport, station, region, district…'
           onChange={this.onSearchChange}
+          onClick={this.checkValue}
           value={this.state.inputValue} />
-        {this.state.data.map(({ name, index }) => (<span onClick={() => this.updateBox(name)} key={index} value={name} className="result">{name}</span>))}
+        <div className='search-form__results'>
+          {this.state.data.map(({ name, index, country, city }) => (<div onClick={() => this.updateBox(name)} key={index} value={name} className="search-form__results-name">{name}
+            <div className='search-form__results-details'><span>{city} </span><span>{country}</span></div>
+          </div>))}
+        </div>
       </div>
     );
   }

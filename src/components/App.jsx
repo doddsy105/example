@@ -6,17 +6,20 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: 'Let’s find your ideal car',
+      title: 'Where are you going?',
+      pickUp: 'Pick-up Location'
     };
 
   }
   
   render() {
     return (
-      <div className='search-form'>
+      <form className='search-form'>
         <h2 className='search-form__header'>{this.state.title}</h2>
+        <label className='search-form__pickup'>{this.state.pickUp}</label>
         <Results />
-      </div>
+
+      </form>
     );
   }
 }

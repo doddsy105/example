@@ -1,8 +1,34 @@
 // General layout and other stuff
+$site-background-image:  url('../img/background.jpg') no-repeat;
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	color: $site-primary-black;
+}
 
 body {
 	font-family: 'Arial', Helvetica, sans-serif;
 	font-size: 16px;
+}
+
+#App {
+	width: 100%;
+	height: 100%;
+	padding: 15px;
+	background: $site-background-image;
+	background-size: cover;
+}
+
+.search-form {
+	width: 48%;
+	margin: 15px;
+	padding: 15px;
+	background: $site-primary-color;
+	box-sizing: border-box;
+	max-width: 500px;
+	min-width: 290px;
 }
 
 .search-form__header {
@@ -10,14 +36,53 @@ body {
 	font-weight: 700;
 	line-height: 1.3em;
 	text-shadow: none;
-	padding-bottom: 10px;
+	padding-bottom: 15px;
 }
 
-.search {
-	max-width: 200px;
+.search-form__pickup {
+	display: block;
+	padding-bottom: 5px;
+	font-size: 14px;
+	color: $site-form-label-color;
 }
 
-span.result {
+.search-form__search-input {
+	width: 100%;
+	padding: 10px 25px 10px 10px;
+	box-sizing: border-box;
+	background: $site-primary-white;
+	border: solid 1px $site-primary-grey;
+	outline-color: $site-form-outline-color;
+}
+
+.search-form__results {
+	background: $site-primary-white;
+}
+
+.search-form__results-name {
 	display: inline-block;
 	width: 100%;
+	padding: 10px;
+	border-bottom: 1px solid $site-primary-grey;
+	box-sizing: border-box;
+
+	&:hover {
+		background-color: $site-form-result-hover-color;
+	}
+
+	&:first-child {
+		padding-top: 10px;
+	}
+
+	&:last-child {
+		padding-bottom: 10px;
+		border: none;
+	}
+}
+
+.search-form__results-details {
+	display: block;
+	font-size: 12px;
+	padding-top: 2px;
+	color: $site-primary-grey;
 }
