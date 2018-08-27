@@ -6,15 +6,15 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: 'App form',
+      title: 'Let’s find your ideal car',
     };
 
   }
   
   render() {
     return (
-      <div>
-        hello
+      <div className='search-form'>
+        <h2 className='search-form__header'>{this.state.title}</h2>
         <Results />
       </div>
     );

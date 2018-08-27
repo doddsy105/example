@@ -50,6 +50,7 @@ class Results extends Component {
     return (
       <div className='search'>
         <input type='text'
+          placeholder='city, airport, station, region, district…'
           onChange={this.onSearchChange}
           value={this.state.inputValue} />
         {this.state.data.map(({ name, index }) => (<span onClick={() => this.updateBox(name)} key={index} value={name} className="result">{name}</span>))}

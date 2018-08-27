@@ -2,7 +2,7 @@
 
 Test project:
 
-`git clone https://github.com/doddsy105/test.git`
+`git clone https://github.com/doddsy105/example.git`
 
 `npm install`
 
