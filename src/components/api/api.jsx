@@ -32,7 +32,7 @@ class Results extends Component {
         });
     }
 
-    if(this.state.inputValue.length <= 0 ) {
+    if(this.state.inputValue.length <= 1 ) {
       this.setState({ data: [] });
     }
   }
