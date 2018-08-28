@@ -19,7 +19,7 @@ class Results extends Component {
     this.setState({ inputValue: e.target.value});
     let Location = this.state.inputValue;
 
-    if(this.state.inputValue.length >= 1) {
+    if(e.target.value.length >= 2) {
       const url = 'https://www.rentalcars.com/FTSAutocomplete.do?solrIndex=fts_en&solrRows=%7b5%7d&solrTerm=%7b' + Location + '%7d';
       fetch(url)
         .then(res => res.json())
@@ -32,7 +32,7 @@ class Results extends Component {
         });
     }
 
-    if(this.state.inputValue.length <= 0 ) {
+    if(e.target.value.length <= 1 ) {
       this.setState({ data: [] });
     }
   }
