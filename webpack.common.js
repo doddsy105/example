@@ -5,7 +5,8 @@ const SassLintPlugin = require('sass-lint-webpack');
 
 module.exports = {
   entry: {
-    app: './src/entry.jsx'
+    app: './src/entry.tsx',
+    api: './src/components/api/api.tsx'
    },
   module: {
     rules: [
@@ -13,6 +14,11 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
+      },
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        loader: 'ts-loader',
       },
       {
         test: /\.jsx?$/,
@@ -56,7 +62,12 @@ module.exports = {
     })
   ],
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.ts', '.tsx']
+  },
+  optimization: {
+    splitChunks: {
+     chunks: 'all'
+    }
   },
    output: {
      filename: '[name].bundle.js',
