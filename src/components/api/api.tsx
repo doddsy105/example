@@ -2,8 +2,20 @@ import React, { Component } from 'react';
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
-class Results extends Component {
-  constructor(props) {
+interface Istate {
+  data: Array<Idata>;
+  inputValue: string;
+
+}
+
+interface Idata {
+  name: string;
+  placeKey: string; 
+  country: string;
+  city: string;
+}
+export class Results extends Component<{}, Istate>  {  
+  public constructor(props: {}) {
     super(props);
     this.state = {
       data: [],
@@ -15,7 +27,7 @@ class Results extends Component {
     this.checkValue = this.checkValue.bind(this);
   }
 
-  onSearchChange(e) {
+  onSearchChange(e: any) {
     this.setState({ inputValue: e.target.value});
     let Location = this.state.inputValue;
 
@@ -37,7 +49,7 @@ class Results extends Component {
     }
   }
 
-  updateBox(name) {
+  updateBox(name: any) {
     this.setState({ inputValue: name });
     this.setState({ data: [] });
   }
@@ -45,7 +57,6 @@ class Results extends Component {
   checkValue() {
     this.setState({ data: [] });
   }
-
 
   render() {
     return (
@@ -57,9 +68,9 @@ class Results extends Component {
           onClick={this.checkValue}
           value={this.state.inputValue} />
         <div className='search-form__results'>
-          {this.state.data.map(({ name, placeKey, country, city }) => (<div onClick={() => this.updateBox(name)} key={placeKey} value={name} className="search-form__results-name">{name}
+          {this.state.data.map(({ name, placeKey, country, city }) => (<div> onClick={() => this.updateBox(name)} key={placeKey} value={name} className="search-form__results-name">{name}
             <div className='search-form__results-details'><span>{city} </span><span>{country}</span></div>
-          </div>))}
+            </div>))}
         </div>
       </div>
     );
