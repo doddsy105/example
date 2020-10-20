@@ -1,7 +1,7 @@
-- name: Lighthouse CI Action
+name: Lighthouse CI Action
   # You may pin to the exact commit or the version.
   # uses: treosh/lighthouse-ci-action@3f01a66925eae1613cb01504ae14ddb29b76cf0d
-  uses: treosh/lighthouse-ci-action@v3
+uses: treosh/lighthouse-ci-action@v3
   with:
     # List of URL(s) to analyze
     urls: # optional
